@@ -7,9 +7,12 @@ from argon2 import PasswordHasher, exceptions as argon2_exceptions
 
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
+
 db = client['mergington_high']
 activities_collection = db['activities']
 teachers_collection = db['teachers']
+# Announcements collection
+announcements_collection = db['announcements']
 
 # Methods
 
@@ -36,6 +39,7 @@ def verify_password(hashed_password: str, plain_password: str) -> bool:
         return False
 
 
+
 def init_database():
     """Initialize database if empty"""
 
@@ -47,8 +51,12 @@ def init_database():
     # Initialize teacher accounts if empty
     if teachers_collection.count_documents({}) == 0:
         for teacher in initial_teachers:
-            teachers_collection.insert_one(
-                {"_id": teacher["username"], **teacher})
+            teachers_collection.insert_one({"_id": teacher["username"], **teacher})
+
+    # Initialize announcements if empty
+    if announcements_collection.count_documents({}) == 0:
+        for announcement in initial_announcements:
+            announcements_collection.insert_one(announcement)
 
 
 # Initial database if empty
@@ -205,5 +213,18 @@ initial_teachers = [
         "display_name": "Principal Martinez",
         "password": hash_password("admin789"),
         "role": "admin"
+    }
+]
+
+# Example announcement for initialization
+import datetime
+initial_announcements = [
+    {
+        "title": "Welcome Back!",
+        "message": "Welcome to a new school year at Mergington High! Check out the new activities and clubs.",
+        "start_date": None,
+        "expiration_date": (datetime.datetime.utcnow() + datetime.timedelta(days=30)).isoformat(),
+        "created_by": "principal",
+        "created_at": datetime.datetime.utcnow().isoformat(),
     }
 ]

@@ -669,6 +669,112 @@ footer {
   background-color: #2e7d32;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 15px 20px;
   font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+#announcement-banner-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Announcements Modal */
+#announcements-modal .modal-content.announcements-modal-content {
+  max-width: 500px;
+  width: 95%;
+  padding: 24px 20px 20px 20px;
+}
+
+#announcements-list {
+  margin-bottom: 18px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.announcement-item {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.announcement-item .announcement-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+#announcement-form-container {
+  margin-top: 16px;
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 12px 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+#announcement-form .form-group {
+  margin-bottom: 10px;
+}
+
+#announcement-form label {
+  font-weight: 500;
+  font-size: 0.95em;
+  margin-bottom: 2px;
+  display: block;
+}
+
+#announcement-form input,
+#announcement-form textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.95em;
+  margin-top: 2px;
+}
+
+#announcement-form textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+#announcement-form button {
+  margin-right: 8px;
+}
+
+#add-announcement-btn {
+  background: var(--primary);
+  color: white;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.announcement-actions button {
+  font-size: 0.85em;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  margin-right: 4px;
+}
+
+.announcement-actions button:last-child {
+  margin-right: 0;
 }
